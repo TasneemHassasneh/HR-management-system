@@ -1,0 +1,79 @@
+body {
+    color: #3C486B;
+    font-family: Helvetica;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    padding: auto;
+}
+
+header{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    background-color: #3C486B;
+    color: aliceblue;
+    position: fixed;
+}
+
+.head-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.head-container h6{
+ font-size: small;
+}
+
+#logo{
+    height: 40px;
+    background-color: #210062;
+}
+
+nav a{
+    text-decoration: none;
+    margin-left: 10px;
+    color:aliceblue ;
+    height: 100%;
+}
+
+nav a:hover{
+    background-color: antiquewhite;
+    color:#210062 ;
+}
+#container{
+    border: 1px solid;
+    margin-top: 20%;
+    width: 50%;
+    margin-left:25%;
+    padding: 10px;
+    height: 100%;
+    
+}
+
+main #employees-information p{
+    margin: 5px;
+}
+
+footer{
+    background-color: #C0DBEA;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    gap:5px;
+    font-size: small;
+    position: fixed;
+    bottom: 0;
+}
+
+.icon{
+    width: 20px;
+}
