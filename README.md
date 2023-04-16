@@ -17,3 +17,6 @@
    prototype function to render each employee name with their salary in the home page.
 
 ,and creates style file for design the pages.
+
+### lab 08
+
