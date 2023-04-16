@@ -48,13 +48,16 @@ nav a:hover{
     color:#210062 ;
 }
 #container{
-    border: 1px solid;
-    margin-top: 20%;
+    margin-top: 10%;
     width: 50%;
     margin-left:25%;
     padding: 10px;
     height: 100%;
     
+}
+
+#employees-information{
+    border: 1px solid;
 }
 
 main #employees-information p{
@@ -76,4 +79,17 @@ footer{
 
 .icon{
     width: 20px;
+}
+
+#information-form input , #information-form label, #information-form select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 5px 0;
+}
+
+#information-form label{
+    align-items: flex-start;
 }
