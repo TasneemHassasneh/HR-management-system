@@ -35,7 +35,7 @@ let employee6=new Employee('Rana Saleh',1005,'Development','Junior','https://git
 let employee7=new Employee('Hadi Ahmad',1006,'Finance','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
 //
 
-Employee.prototype.render1 = function(){
+Employee.prototype.render = function(){
     const admin= document.getElementById('admin')
     const dev= document.getElementById('dev')
     const fin= document.getElementById('mark')
@@ -52,7 +52,6 @@ Employee.prototype.render1 = function(){
         dev.appendChild(divEle)
     }
     
-
     const imgEle = document.createElement('img')
     imgEle.src=this.imgURL
     imgEle.alt='employee img'
@@ -64,45 +63,12 @@ Employee.prototype.render1 = function(){
 
     const p2Ele = document.createElement('p');
     p2Ele.textContent = `Department: ${this.Department} - Level: ${this.level}`;
-    divEle.appendChild(p2Ele);
-
-    
+    divEle.appendChild(p2Ele);    
 }
-Employee.prototype.render2 = function(){
-    const admin= document.getElementById('admin')
-    const dev= document.getElementById('dev')
-    const fin= document.getElementById('mark')
-    const mark= document.getElementById('fin')
-
-    const divEle = document.createElement('div')
-    if(this.Department==="Administration"){
-        admin.appendChild(divEle);
-    }else if(this.Department==="finance"){
-        fin.appendChild(divEle)
-    }else if(this.Department==="Marketing"){
-        mark.appendChild(divEle)
-    }else if(this.Department==="Development"){
-        dev.appendChild(divEle)
-    }
-
-    const imgEle = document.createElement('img')
-    imgEle.src=this.imgURL
-    imgEle.alt='employee img'
-    divEle.appendChild(imgEle);   
-
-    const p1Ele = document.createElement('p');
-    p1Ele.textContent = `Name: ${this.fullName} - ID: ${this.employeeId}`;
-    divEle.appendChild(p1Ele);
-
-    const p2Ele = document.createElement('p');
-    p2Ele.textContent = `Department: ${this.Department} - Level: ${this.level}`;
-    divEle.appendChild(p2Ele); 
-}
-
 
 let arr = [employee1,employee2,employee3,employee4,employee5,employee6,employee7]
 for(let i=0 ;i < arr.length;i++){
-    arr[i].render1();
+    arr[i].render();
 }
 
 function getInformation(e){
@@ -114,13 +80,11 @@ function getInformation(e){
     
         const newInfo = new Employee(fullName,this.calcEmployeeId,department,level,imgURL)
         newInfo.calcEmployeeId()
-        newInfo.render2();}
+        newInfo.render();}
     
 }
 
 const getInfo = document.getElementById('info')
 getInfo.addEventListener('submit',getInformation)
-
-
 
 //Math.random() * (max - min) + min;
