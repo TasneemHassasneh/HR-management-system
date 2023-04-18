@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>HR Management System</title>
 </head>
@@ -23,14 +24,53 @@
 
     <main>
     <div id="container">
-        <div id="employees-information">
-
-        </div>
-            
-    </div>
-        
+        <section class="info">
+            <fieldset>
+                <legend>Information</legend>
+                <form id="info">
+                    <div>
+                        <label>Full name</label>
+                        <input type="text" name="fullName" id="fullName">
+                    </div>
+                    <div>
+                        <label>Image URL</label>
+                        <input type="url" name="imgURL" id="imgURL">
+                    </div>
+                    <div>
+                        <label>Department</label>
+                        <select name="Department" id="Department">
+                            <option value="">Select your department</option>
+                            <option value="Administration">Administration</option>
+                            <option value="Development">Development</option>
+                            <option value="finance">finance</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Level</label>
+                        <select name="Level" id="Level">
+                            <option value="">Select your level</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Mid-Senior">Mid-Senior</option>
+                            <option value="Senior">Senior</option>  
+                    </div>
+                  
+                    <div>
+                        <input type="submit" name="submit" id="submit" value="SEND">
+                    </div>
+                </form>
+            </fieldset>
+        </section>
+        <section id="con">
+            <section class="cards" id="admin"><h4>Administration</h4></section>
+            <section class="cards" id="dev"><h4>Development</h4></section>
+            <section class="cards" id="fin"><h4>Marketing</h4></section>
+            <section class="cards" id="mark"><h4>Finance</h4></section>
+        </section>
+    </div> 
+    
+   
     </main>
-
     <footer>
         <nav>
             <a href=""><img src="../img/gmail.png" class="icon"></a>
