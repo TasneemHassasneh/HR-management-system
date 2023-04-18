@@ -1,14 +1,14 @@
 body {
     color: #3C486B;
     font-family: Helvetica;
-    width: 90%;
+    width: 95%;
     height: 100%;
     margin: auto;
     padding: auto;
 }
 
 header{
-    width: 90%;
+    width: 95%;
     height: 50px;
     display: flex;
     justify-content: space-around;
@@ -49,15 +49,10 @@ nav a:hover{
 }
 #container{
     margin-top: 10%;
-    width: 50%;
-    margin-left:25%;
-    padding: 10px;
-    height: 100%;
-    
-}
-
-#employees-information{
-    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: row;
 }
 
 main #employees-information p{
@@ -66,7 +61,7 @@ main #employees-information p{
 
 footer{
     background-color: #C0DBEA;
-    width: 90%;
+    width: 95%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -77,19 +72,64 @@ footer{
     bottom: 0;
 }
 
+fieldset{
+    border: 1px solid;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
 .icon{
     width: 20px;
 }
 
-#information-form input , #information-form label, #information-form select{
+.info div{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     flex-direction: column;
-    width: 100%;
-    margin: 5px 0;
+    gap: 10px;
+    margin: 10px;
 }
 
-#information-form label{
-    align-items: flex-start;
+#con{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.cards{
+    background-color:#ADE4DB;
+    width: 30%;
+    text-align: center;
+    align-items: center;
+    margin-left: 5px;
+    font-size: large;
+    width: 50%;
+}
+
+#admin, #fin{
+    background-color: #BFCCB5;
+}
+
+.cards h4{
+    font-size: small;
+}
+
+#container .cards div{
+    width: 150px;
+    height: 100px;
+    padding: 50px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid;
+    font-size: 10px;
+}
+
+#container .cards div img{
+    width: 100px;
 }
