@@ -7,7 +7,10 @@ function Employee(fullName,employeeId,Department,level,imgURL){
     this.level=level;
     this.salary=this.calcSalary();
     this.imgURL=imgURL;
+    Employee.allEmployee.push(this);
 }
+
+Employee.allEmployee =[];
 
 Employee.prototype.calcEmployeeId=function(){
     this.employeeId = Math.floor(Math.random() * (9999 - 1000) +1000);
@@ -66,9 +69,8 @@ Employee.prototype.render = function(){
     divEle.appendChild(p2Ele);    
 }
 
-let arr = [employee1,employee2,employee3,employee4,employee5,employee6,employee7]
-for(let i=0 ;i < arr.length;i++){
-    arr[i].render();
+for(let i=0 ;i < Employee.allEmployee.length;i++){
+    Employee.allEmployee[i].render();
 }
 
 function getInformation(e){
@@ -79,12 +81,37 @@ function getInformation(e){
         let imgURL = e.target.imgURL.value;
     
         const newInfo = new Employee(fullName,this.calcEmployeeId,department,level,imgURL)
+        Employee.allEmployee.push(newInfo)
         newInfo.calcEmployeeId()
-        newInfo.render();}
+        newInfo.render();
+        saveData();}
     
 }
 
+function saveData() {
+    let data = JSON.stringify(Employee.allEmployee);
+    localStorage.setItem('employees', data);
+  }
+
+  function getData() {
+    let stringObj = localStorage.getItem('employees');
+    let parseObj = JSON.parse(stringObj);
+    console.log(parseObj)
+    if(parseObj !== null) {
+      // Order.allOrders = parseObj;
+      // console.log(Order.allOrders)
+      for(let i = 0; i < parseObj.length; i++) {
+        // console.log(parseObj[i])
+        new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level);
+      }
+      console.log(Employee.allEmployee)
+      //Employee.allEmployee[0].render()
+    }
+    
+  }
+
+
 const getInfo = document.getElementById('info')
 getInfo.addEventListener('submit',getInformation)
-
+getData()
 //Math.random() * (max - min) + min;

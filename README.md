@@ -19,4 +19,7 @@
 ,and creates style file for design the pages.
 
 ### lab 08
+
 - add form , and then get these data in js to print it in section based on department.
+
+### lab 09
