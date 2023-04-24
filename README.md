@@ -23,3 +23,5 @@
 - add form , and then get these data in js to print it in section based on department.
 
 ### lab 09
+
+create table element, push to it Department's information such as find the number's of employee, summation od total and average salary.
