@@ -1,5 +1,5 @@
 'use strict';
-
+let E
 function Employee(fullName,employeeId,Department,level,imgURL){
     this.employeeId=employeeId;
     this.fullName=fullName;
@@ -20,57 +20,65 @@ Employee.prototype.calcEmployeeId=function(){
 Employee.prototype.calcSalary = function(){
     let salaryA = 0;
     if(this.level==='Senior'){
-        salaryA=Math.random() * (2000 - 1500) + 1500;
+        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000) ;
     }else if(this.level==='Mid-Senior'){
-        salaryA=Math.random() * (1500 - 1000) + 1000;
+        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000);
     }else if(this.level==='Junior'){
-        salaryA=Math.random() * (1000 - 500) + 500;
+        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000);
     }
     return salaryA;
 }
  
-let employee1=new Employee('Ghazi Samer',1000,'Administration','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
+/*let employee1=new Employee('Ghazi Samer',1000,'Administration','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
 let employee2=new Employee('Lana Ali',1001,'finance','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Lana.jpg?raw=true')
 let employee3=new Employee('Tamara Ayoub',1002,'Marketing','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Tamara.jpg?raw=true')
 let employee4=new Employee('Safgggi Walid',1003,'Administration','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Safi.jpg?raw=true')
 let employee5=new Employee('Omar Zaid',1004,'Development','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Omar.jpg?raw=true')
 let employee6=new Employee('Rana Saleh',1005,'Development','Junior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Rana.jpg?raw=true')
 let employee7=new Employee('Hadi Ahmad',1006,'Finance','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
-//
 
-Employee.prototype.render = function(){
-    const admin= document.getElementById('admin')
-    const dev= document.getElementById('dev')
-    const fin= document.getElementById('mark')
-    const mark= document.getElementById('fin')
+*/
 
-    const divEle = document.createElement('div')
-    if(this.Department==="Administration"){
-        admin.appendChild(divEle);
-    }else if(this.Department==="finance"){
-        fin.appendChild(divEle)
-    }else if(this.Department==="Marketing"){
-        mark.appendChild(divEle)
-    }else if(this.Department==="Development"){
-        dev.appendChild(divEle)
+Employee.prototype.render = function () {
+    const admin = document.getElementById('admin')
+    const dev = document.getElementById('dev')
+    const fin = document.getElementById('mark')
+    const mark = document.getElementById('fin')
+    admin.innerHTML='';
+    dev.innerHTML='';
+    fin.innerHTML='';
+    mark.innerHTML='';
+    for (let i = 0; i < Employee.allEmployee.length; i++) {
+        let singleOrder = Employee.allEmployee[i];
+
+        const divEle = document.createElement('div')
+        if (singleOrder.Department === "Administration") {
+            admin.appendChild(divEle);
+        } else if (singleOrder.Department === "Finance") {
+            fin.appendChild(divEle)
+        } else if (singleOrder.Department === "Marketing") {
+            mark.appendChild(divEle)
+        } else if (singleOrder.Department === "Development") {
+            dev.appendChild(divEle)
+        }
+
+        const imgEle = document.createElement('img')
+        imgEle.src = singleOrder.imgURL
+        imgEle.alt = 'employee img'
+        divEle.appendChild(imgEle);
+
+        const p1Ele = document.createElement('p');
+        p1Ele.textContent = `Name: ${singleOrder.fullName} - ID: ${singleOrder.employeeId}`;
+        divEle.appendChild(p1Ele);
+
+        const p2Ele = document.createElement('p');
+        p2Ele.textContent = `Department: ${singleOrder.Department} - Level: ${singleOrder.level}`;
+        divEle.appendChild(p2Ele);
+
+        const p3Ele = document.createElement('p');
+        p3Ele.textContent = `Salary: ${singleOrder.salary}`
+        divEle.appendChild(p3Ele);   
     }
-    
-    const imgEle = document.createElement('img')
-    imgEle.src=this.imgURL
-    imgEle.alt='employee img'
-    divEle.appendChild(imgEle);   
-
-    const p1Ele = document.createElement('p');
-    p1Ele.textContent = `Name: ${this.fullName} - ID: ${this.employeeId}`;
-    divEle.appendChild(p1Ele);
-
-    const p2Ele = document.createElement('p');
-    p2Ele.textContent = `Department: ${this.Department} - Level: ${this.level}`;
-    divEle.appendChild(p2Ele);    
-}
-
-for(let i=0 ;i < Employee.allEmployee.length;i++){
-    Employee.allEmployee[i].render();
 }
 
 function getInformation(e){
@@ -81,10 +89,11 @@ function getInformation(e){
         let imgURL = e.target.imgURL.value;
     
         const newInfo = new Employee(fullName,this.calcEmployeeId,department,level,imgURL)
-        Employee.allEmployee.push(newInfo)
         newInfo.calcEmployeeId()
         newInfo.render();
-        saveData();}
+        saveData();
+
+}
     
 }
 
@@ -93,25 +102,21 @@ function saveData() {
     localStorage.setItem('employees', data);
   }
 
-  function getData() {
+  function getDate(){
     let stringObj = localStorage.getItem('employees');
     let parseObj = JSON.parse(stringObj);
-    console.log(parseObj)
     if(parseObj !== null) {
-      // Order.allOrders = parseObj;
-      // console.log(Order.allOrders)
-      for(let i = 0; i < parseObj.length; i++) {
-        // console.log(parseObj[i])
-        new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level);
+        for(let i = 0; i < parseObj.length; i++) {
+          console.log(parseObj[i])
+          new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL);
+        }
+        Employee.allEmployee[0].render()
       }
-      console.log(Employee.allEmployee)
-      //Employee.allEmployee[0].render()
-    }
-    
   }
-
 
 const getInfo = document.getElementById('info')
 getInfo.addEventListener('submit',getInformation)
-getData()
+getDate();
+
+
 //Math.random() * (max - min) + min;
