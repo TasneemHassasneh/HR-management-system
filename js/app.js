@@ -1,6 +1,6 @@
 'use strict';
 let E
-function Employee(fullName,employeeId,Department,level,imgURL){
+function Employee(fullName,employeeId,Department,level,imgURL,salary=0){
     this.employeeId=employeeId;
     this.fullName=fullName;
     this.Department=Department;
@@ -29,7 +29,7 @@ Employee.prototype.calcSalary = function(){
     return salaryA;
 }
  
-/*let employee1=new Employee('Ghazi Samer',1000,'Administration','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
+let employee1=new Employee('Ghazi Samer',1000,'Administration','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
 let employee2=new Employee('Lana Ali',1001,'finance','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Lana.jpg?raw=true')
 let employee3=new Employee('Tamara Ayoub',1002,'Marketing','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Tamara.jpg?raw=true')
 let employee4=new Employee('Safgggi Walid',1003,'Administration','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Safi.jpg?raw=true')
@@ -37,7 +37,6 @@ let employee5=new Employee('Omar Zaid',1004,'Development','Senior','https://gith
 let employee6=new Employee('Rana Saleh',1005,'Development','Junior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Rana.jpg?raw=true')
 let employee7=new Employee('Hadi Ahmad',1006,'Finance','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
 
-*/
 
 Employee.prototype.render = function () {
     const admin = document.getElementById('admin')
@@ -108,7 +107,7 @@ function saveData() {
     if(parseObj !== null) {
         for(let i = 0; i < parseObj.length; i++) {
           console.log(parseObj[i])
-          new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL);
+          new Employee(parseObj[i].employeeId, parseObj[i].fullName, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL,parseObj[i].salary);
         }
         Employee.allEmployee[0].render()
       }
