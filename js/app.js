@@ -1,52 +1,43 @@
 'use strict';
 let E
-function Employee(fullName,employeeId,Department,level,imgURL,salary=0){
-    this.employeeId=employeeId;
-    this.fullName=fullName;
-    this.Department=Department;
-    this.level=level;
-    this.salary=this.calcSalary();
-    this.imgURL=imgURL;
+function Employee(fullName, employeeId, Department, level, imgURL, salary = 0) {
+    this.employeeId = employeeId;
+    this.fullName = fullName;
+    this.Department = Department;
+    this.level = level;
+    this.salary = this.calcSalary();
+    this.imgURL = imgURL;
     Employee.allEmployee.push(this);
 }
 
-Employee.allEmployee =[];
+Employee.allEmployee = [];
 
-Employee.prototype.calcEmployeeId=function(){
-    this.employeeId = Math.floor(Math.random() * (9999 - 1000) +1000);
+Employee.prototype.calcEmployeeId = function () {
+    this.employeeId = Math.floor(Math.random() * (9999 - 1000) + 1000);
     return this.employeeId;
 }
 
-Employee.prototype.calcSalary = function(){
+Employee.prototype.calcSalary = function () {
     let salaryA = 0;
-    if(this.level==='Senior'){
-        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000) ;
-    }else if(this.level==='Mid-Senior'){
-        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000);
-    }else if(this.level==='Junior'){
-        salaryA=Math.floor(Math.random() * (1500 - 1000) + 1000);
+    if (this.level === 'Senior') {
+        salaryA = Math.floor(Math.random() * (1500 - 1000) + 1000);
+    } else if (this.level === 'Mid-Senior') {
+        salaryA = Math.floor(Math.random() * (1500 - 1000) + 1000);
+    } else if (this.level === 'Junior') {
+        salaryA = Math.floor(Math.random() * (1500 - 1000) + 1000);
     }
     return salaryA;
 }
- 
-let employee1=new Employee('Ghazi Samer',1000,'Administration','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
-let employee2=new Employee('Lana Ali',1001,'finance','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Lana.jpg?raw=true')
-let employee3=new Employee('Tamara Ayoub',1002,'Marketing','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Tamara.jpg?raw=true')
-let employee4=new Employee('Safgggi Walid',1003,'Administration','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Safi.jpg?raw=true')
-let employee5=new Employee('Omar Zaid',1004,'Development','Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Omar.jpg?raw=true')
-let employee6=new Employee('Rana Saleh',1005,'Development','Junior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Rana.jpg?raw=true')
-let employee7=new Employee('Hadi Ahmad',1006,'Finance','Mid-Senior','https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
-
 
 Employee.prototype.render = function () {
     const admin = document.getElementById('admin')
     const dev = document.getElementById('dev')
     const fin = document.getElementById('mark')
     const mark = document.getElementById('fin')
-    admin.innerHTML='';
-    dev.innerHTML='';
-    fin.innerHTML='';
-    mark.innerHTML='';
+    admin.innerHTML = 'Administration';
+    dev.innerHTML = 'Development';
+    mark.innerHTML = 'Marketing';
+    fin.innerHTML = 'Finance';
     for (let i = 0; i < Employee.allEmployee.length; i++) {
         let singleOrder = Employee.allEmployee[i];
 
@@ -76,45 +67,54 @@ Employee.prototype.render = function () {
 
         const p3Ele = document.createElement('p');
         p3Ele.textContent = `Salary: ${singleOrder.salary}`
-        divEle.appendChild(p3Ele);   
+        divEle.appendChild(p3Ele);
     }
 }
 
-function getInformation(e){
-    if (e && e.preventDefault) { e.preventDefault(); 
+/*let employee1 = new Employee('Ghazi Samer', 1000, 'Administration', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
+let employee2 = new Employee('Lana Ali', 1001, 'Finance', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Lana.jpg?raw=true')
+let employee3 = new Employee('Tamara Ayoub', 1002, 'Marketing', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Tamara.jpg?raw=true')
+let employee4 = new Employee('Safgggi Walid', 1003, 'Administration', 'Mid-Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Safi.jpg?raw=true')
+let employee5 = new Employee('Omar Zaid', 1004, 'Development', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Omar.jpg?raw=true')
+let employee6 = new Employee('Rana Saleh', 1005, 'Development', 'Junior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Rana.jpg?raw=true')
+let employee7 = new Employee('Hadi Ahmad', 1006, 'Finance', 'Mid-Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
+*/
+function getInformation(e) {
+    if (e && e.preventDefault) {
+        e.preventDefault();
         let fullName = e.target.fullName.value;
         let department = e.target.Department.value;
         let level = e.target.Level.value;
         let imgURL = e.target.imgURL.value;
-    
-        const newInfo = new Employee(fullName,this.calcEmployeeId,department,level,imgURL)
+
+        const newInfo = new Employee(fullName, this.calcEmployeeId, department, level, imgURL)
         newInfo.calcEmployeeId()
         newInfo.render();
         saveData();
+    }
 
-}
-    
 }
 
 function saveData() {
     let data = JSON.stringify(Employee.allEmployee);
     localStorage.setItem('employees', data);
-  }
+}
 
-  function getDate(){
+function getDate() {
+
     let stringObj = localStorage.getItem('employees');
     let parseObj = JSON.parse(stringObj);
-    if(parseObj !== null) {
-        for(let i = 0; i < parseObj.length; i++) {
-          console.log(parseObj[i])
-          new Employee(parseObj[i].employeeId, parseObj[i].fullName, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL,parseObj[i].salary);
+    if (parseObj !== null) {
+        for (let i = 0; i < parseObj.length; i++) {
+            console.log(parseObj[i])
+            new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL, parseObj[i].salary);
         }
         Employee.allEmployee[0].render()
-      }
-  }
+    }
+}
 
 const getInfo = document.getElementById('info')
-getInfo.addEventListener('submit',getInformation)
+getInfo.addEventListener('submit', getInformation)
 getDate();
 
 
