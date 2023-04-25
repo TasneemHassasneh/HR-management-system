@@ -140,7 +140,7 @@ span{
     font-style: italic;
 }
 
-#table-info{
+#table-container{
     border: 1px dashed black;
     margin-top: 10%;
     margin-left: 8%;
@@ -150,14 +150,16 @@ span{
     color: black;
 }
 
-#table-info  th ,#table-info  td{
+#table-container  th ,#table-container  td{
     border: 1px dashed black;
     margin: 2%;
     padding: 1%;
 }
 
-#table-info  th{
+#table-container  th{
     color:darkblue
 }
+
+
 
 
