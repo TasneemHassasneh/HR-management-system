@@ -1,5 +1,5 @@
 'use strict';
-let E
+
 function Employee(fullName, employeeId, Department, level, imgURL, salary = 0) {
     this.employeeId = employeeId;
     this.fullName = fullName;
@@ -38,6 +38,7 @@ Employee.prototype.render = function () {
     dev.innerHTML = 'Development';
     mark.innerHTML = 'Marketing';
     fin.innerHTML = 'Finance';
+
     for (let i = 0; i < Employee.allEmployee.length; i++) {
         let singleOrder = Employee.allEmployee[i];
 
@@ -70,15 +71,16 @@ Employee.prototype.render = function () {
         divEle.appendChild(p3Ele);
     }
 }
-
-/*let employee1 = new Employee('Ghazi Samer', 1000, 'Administration', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
+let employee1 = new Employee('Ghazi Samer', 1000, 'Administration', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Ghazi.jpg?raw=true')
 let employee2 = new Employee('Lana Ali', 1001, 'Finance', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Lana.jpg?raw=true')
 let employee3 = new Employee('Tamara Ayoub', 1002, 'Marketing', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Tamara.jpg?raw=true')
 let employee4 = new Employee('Safgggi Walid', 1003, 'Administration', 'Mid-Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Safi.jpg?raw=true')
 let employee5 = new Employee('Omar Zaid', 1004, 'Development', 'Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Omar.jpg?raw=true')
 let employee6 = new Employee('Rana Saleh', 1005, 'Development', 'Junior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Rana.jpg?raw=true')
 let employee7 = new Employee('Hadi Ahmad', 1006, 'Finance', 'Mid-Senior', 'https://github.com/LTUC/amman-prep-d13/blob/main/Class-08/lab/assets/Hadi.jpg?raw=true')
-*/
+
+
+
 function getInformation(e) {
     if (e && e.preventDefault) {
         e.preventDefault();
@@ -105,6 +107,7 @@ function getDate() {
     let stringObj = localStorage.getItem('employees');
     let parseObj = JSON.parse(stringObj);
     if (parseObj !== null) {
+        Employee.allEmployee = [];
         for (let i = 0; i < parseObj.length; i++) {
             console.log(parseObj[i])
             new Employee(parseObj[i].fullName, parseObj[i].employeeId, parseObj[i].Department, parseObj[i].level, parseObj[i].imgURL, parseObj[i].salary);
@@ -115,7 +118,11 @@ function getDate() {
 
 const getInfo = document.getElementById('info')
 getInfo.addEventListener('submit', getInformation)
-getDate();
 
+getDate();
+for(let i =0 ; i<Employee.allEmployee.length ; i++){
+    saveData()
+    Employee.allEmployee[i].render();
+}
 
 //Math.random() * (max - min) + min;
